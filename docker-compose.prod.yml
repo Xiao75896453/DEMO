@@ -1,0 +1,18 @@
+services:
+  server:
+    image: xiao75896453/demo-${PROJECT_IMAGE_NAME}
+    ports:
+      - "${SERVICE_PORT}:${SERVICE_PORT}"
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - xiao75896453-demo
+    env_file:
+      - ./${PROJECT_PATH}/.env
+      - ./${PROJECT_PATH}/.env.prod
+      - ./${PROJECT_PATH}/.env.docker
+    environment:
+      - DB_HOST=db
+    container_name: xiao75896453-demo-${PROJECT_IMAGE_NAME}-server
+    restart: always

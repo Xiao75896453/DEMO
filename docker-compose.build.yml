@@ -1,0 +1,6 @@
+services:
+  server:
+    build:
+      context: .
+      dockerfile: ./${PROJECT_PATH}/Dockerfile
+    image: xiao75896453/demo-${PROJECT_IMAGE_NAME}
