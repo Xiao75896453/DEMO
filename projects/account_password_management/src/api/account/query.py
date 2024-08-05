@@ -1,7 +1,8 @@
-from lib.exceptions import ConflictException, NotFound
+from sqlalchemy.exc import IntegrityError, NoResultFound
 from sqlalchemy.orm import Session
 from src.models.account import Account
-from sqlalchemy.exc import IntegrityError, NoResultFound
+
+from lib.exceptions import ConflictException, NotFound
 
 USERNAME_NOT_EXISTS_REASON = "Username not exists"
 USERNAME_ALREADY_EXISTS_REASON = "Username already exists"

@@ -1,17 +1,15 @@
 from fastapi import APIRouter, Depends, status
 from fastapi.responses import JSONResponse
 from sqlalchemy.orm import Session
-from src.api.account.controller import (
-    PASSWORD_COMPONENT_NOT_CORRECT_REASON,
-    PASSWORD_TOO_LONG_REASON,
-    PASSWORD_TOO_SHORT_REASON,
-    USERNAME_TOO_LONG_REASON,
-    USERNAME_TOO_SHORT_REASON,
-    Account,
-)
+from src.api.account.controller import (PASSWORD_COMPONENT_NOT_CORRECT_REASON,
+                                        PASSWORD_TOO_LONG_REASON,
+                                        PASSWORD_TOO_SHORT_REASON,
+                                        USERNAME_TOO_LONG_REASON,
+                                        USERNAME_TOO_SHORT_REASON, Account)
 from src.api.account.query import USERNAME_ALREADY_EXISTS_REASON
 from src.schema.account import Account as AccountSchema
 from src.utils.db_connector import db
+
 from lib.api_doc_response import api_doc_response
 from lib.custom_response import failed_response, success_response
 from lib.schema import ResponseSuccess

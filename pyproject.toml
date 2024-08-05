@@ -25,3 +25,7 @@ pre-commit = "^3.8.0"
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.ruff.lint.per-file-ignores]
+"__init__.py" = ["F401"]
+"env.py" = ["F401"]

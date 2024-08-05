@@ -2,9 +2,10 @@ import pytest
 from fastapi import status
 from fastapi.encoders import jsonable_encoder
 from fastapi.testclient import TestClient
+from sqlalchemy.orm import Session
 from src.api.account.query import get_account
 from src.main import ACCOUNT_API_ROUTE
-from sqlalchemy.orm import Session
+
 from lib.custom_response import failed_response
 from lib.unit_test import everything_equals
 
