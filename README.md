@@ -8,6 +8,14 @@
 ## account_password_management
 [![My Skills](https://skillicons.dev/icons?i=python,fastapi,postgresql&theme=light)](https://skillicons.dev)
 
+- Backend Framework : [FastAPI](https://fastapi.tiangolo.com/) (async)
+- [Unit Test](https://github.com/Xiao75896453/DEMO/tree/develop/projects/account_password_management/tests) : [pytest](https://docs.pytest.org/en/stable/)
+- [GitHub Actions](https://github.com/Xiao75896453/DEMO/actions) : lint、test
+- ORM : [SQLAlchemy](https://www.sqlalchemy.org/)
+- [DB Migration](https://github.com/Xiao75896453/DEMO/tree/develop/projects/account_password_management/alembic) : [Alembic](https://alembic.sqlalchemy.org/en/latest/)
+- lint : [ruff](https://github.com/astral-sh/ruff)、[isort](https://pycqa.github.io/isort/index.html)
+- [Git Hook](https://github.com/Xiao75896453/DEMO/blob/develop/.pre-commit-config.yaml) : [pre-commit](https://pre-commit.com/)
+
 ### Requirements
 - python 3.11+
 - poetry
