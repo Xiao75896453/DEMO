@@ -20,8 +20,8 @@ repos:
     hooks:
     - id: ruff
       name: ruff
-      entry: ruff
-      args: ['check .']
+      entry: ruff check
+      args: ['.']
       language: system
       types: [python]
   - repo: local
