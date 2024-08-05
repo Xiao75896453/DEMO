@@ -13,7 +13,7 @@ from lib.custom_response import failed_response, success_response
 
 class TestVerification:
     CREATE_ACCOUNT_API_ROUTE = ACCOUNT_API_ROUTE
-    VERIFICATION_API_ROUTE = f"{AUTHENTICATION_API_ROUTE}/verification"
+    VERIFICATION_API_ROUTE = f"{AUTHENTICATION_API_ROUTE}/verifications"
 
     @pytest.mark.asyncio
     async def test_verification(self, test_client: TestClient):
