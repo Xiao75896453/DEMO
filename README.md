@@ -17,7 +17,7 @@
     ```bash
     git clone git@github.com:Xiao75896453/DEMO.git
     ```
-2. Create `.env` `.env.prod` `.env.docker` file in `project/account_password_management` and set value.
+2. Create `.env` `.env.prod` `.env.docker` file in `projects/account_password_management` and set value.
 
     `.env` example
     ```.env
@@ -67,7 +67,7 @@
 1. Install PostgreSQL
 1. Set PostgreSQL account
 1. Create DB
-1. Create `.env` `.env.prod` `.env.docker` file in `project/account_password_management` and set value.
+1. Create `.env` `.env.prod` `.env.docker` file in `projects/account_password_management` and set value.
 
     `.env` example
     ```.env
@@ -121,9 +121,6 @@
 1. Push to the Branch ```git push origin {your feature branch}```
 1. Open a Pull Request
 1. Wait for review and merge
-
----
-# License
 
 ---
 # Contact
