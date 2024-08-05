@@ -30,7 +30,7 @@ class Account:
         try:
             await self.__verify_created_account_format()
             await self.__hash_password()
-            await account.query.create_account()
+            await account.query.create_account(self.__account)
 
         except CustomHTTPException as exception:
             raise exception
