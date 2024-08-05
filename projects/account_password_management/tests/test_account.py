@@ -25,6 +25,8 @@ class TestCreateAccount:
             "id": 1,
             "username": test_data["username"],
             "password": everything_equals,
+            "failed_attempts": 0,
+            "block_verification_time": None,
         }
 
         account = await get_account(

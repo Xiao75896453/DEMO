@@ -27,3 +27,12 @@ async def get_account(username: str, db_session: Session) -> Account:
         )
     except NoResultFound:
         raise NotFound(detail=USERNAME_NOT_EXISTS_REASON)
+
+
+async def update_account(username: str, account: dict, db_session: Session):
+    try:
+        db_session.query(Account).filter(Account.username == username).update(account)
+        db_session.flush()
+
+    except IntegrityError:
+        raise ConflictException(detail=USERNAME_ALREADY_EXISTS_REASON)
