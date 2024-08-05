@@ -5,6 +5,8 @@ class Settings(BaseSettings):
     STAGE: str
     SERVICE_PORT: int
 
+    PROJECT_PATH: str = "projects/account_password_management"
+
     class Config:
         env_file = (
             "projects/account_password_management/.env",
