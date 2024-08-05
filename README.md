@@ -17,8 +17,9 @@
     ```bash
     git clone git@github.com:Xiao75896453/DEMO.git
     ```
-2. Create ```.env``` ```.env.prod``` ```.env.docker``` configuration file in `project/account_password_management` directory and set value
-    example
+2. Create `.env` `.env.prod` `.env.docker` file in `project/account_password_management` and set value.
+
+    `.env` example
     ```.env
     STAGE="stg"
     SERVICE_PORT=3000
@@ -32,12 +33,14 @@
     DB_MAX_OVERFLOW=5
     DB_POOL_RECYCLE=300
     ```
-
-    ```.env.prod
+    
+    `.env.prod`
+    ```.env
     # override .env if you need
     ```
-
-    ```.env.docker
+    
+    `.env.docker`
+    ```.env
     PROJECT_PATH="projects/account_password_management"
     PROJECT_IMAGE_NAME="account-password-management"
     DOCKER_HOST_DB_PORT=5432
@@ -64,8 +67,9 @@
 1. Install PostgreSQL
 1. Set PostgreSQL account
 1. Create DB
-1. Create ```.env``` ```.env.prod``` ```.env.docker``` file in `project/account_password_management` and set value
-    example
+1. Create `.env` `.env.prod` `.env.docker` file in `project/account_password_management` and set value.
+
+    `.env` example
     ```.env
     STAGE="stg"
     SERVICE_PORT=3000
@@ -79,17 +83,19 @@
     DB_MAX_OVERFLOW=5
     DB_POOL_RECYCLE=300
     ```
-
-    ```.env.prod
+    
+    `.env.prod`
+    ```.env
     # override .env if you need
     ```
-
-    ```.env.docker
+    
+    `.env.docker`
+    ```.env
     PROJECT_PATH="projects/account_password_management"
     PROJECT_IMAGE_NAME="account-password-management"
     DOCKER_HOST_DB_PORT=5432
     ```
-2. Create DB schema
+3. Create DB schema
     1. migration
         ```bash
         alembic -c 'projects/account_password_management/alembic.ini' upgrade head
