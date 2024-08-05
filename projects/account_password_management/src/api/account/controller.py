@@ -2,7 +2,9 @@ import re
 
 from sqlalchemy.orm import Session
 from src.api import account
+from src.models.account import Account as AccountModel
 from src.schema.account import Account as AccountSchema
+from src.utils.password import pwd_context
 
 from lib.exceptions import CustomHTTPException, UnprocessableEntityException
 
@@ -26,11 +28,14 @@ class Account:
     def __init__(self, account: AccountSchema) -> None:
         self.__account: AccountSchema = account
 
-    async def create_account(self) -> None:
+    async def create_account(self, db_session: Session) -> None:
         try:
             await self.__verify_created_account_format()
             await self.__hash_password()
-            await account.query.create_account(self.__account)
+            await account.query.create_account(
+                account=AccountModel(**self.__account.model_dump()),
+                db_session=db_session,
+            )
 
         except CustomHTTPException as exception:
             raise exception
@@ -83,4 +88,4 @@ class Account:
             )
 
     async def __hash_password(self) -> None:
-        return
+        self.__account.password = pwd_context.hash(self.__account.password)

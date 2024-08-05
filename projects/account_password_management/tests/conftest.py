@@ -32,6 +32,8 @@ def init_db_schema(db_engine):
 
     yield
 
+    db.get_base_metadata().drop_all(bind=db_engine)
+
 
 def __db_migration():
     alembic_args = [
@@ -45,7 +47,7 @@ def __db_migration():
 
 
 @pytest.fixture(scope="session")
-def db_session_factory():
+def db_session_factory(init_db_schema):
     try:
         yield next(db.get_db_session())
     except StopIteration:

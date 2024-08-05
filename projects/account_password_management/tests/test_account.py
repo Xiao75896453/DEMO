@@ -4,7 +4,7 @@ from fastapi.encoders import jsonable_encoder
 from fastapi.testclient import TestClient
 from src.api.account.query import get_account
 from src.main import ACCOUNT_API_ROUTE
-
+from sqlalchemy.orm import Session
 from lib.custom_response import failed_response
 from lib.unit_test import everything_equals
 
@@ -13,7 +13,7 @@ class TestCreateAccount:
     CREATE_ACCOUNT_API_ROUTE = ACCOUNT_API_ROUTE
 
     @pytest.mark.asyncio
-    async def test_create_account(self, test_client: TestClient):
+    async def test_create_account(self, test_client: TestClient, db_session: Session):
         test_data = {
             "username": "123",
             "password": "Test1234",
@@ -24,11 +24,11 @@ class TestCreateAccount:
             "id": 1,
             "username": test_data["username"],
             "password": everything_equals,
-            "failed_attempts": 0,
-            "failed_login_time": None,
         }
 
-        account = await get_account(username=test_data["username"])
+        account = await get_account(
+            username=test_data["username"], db_session=db_session
+        )
 
         assert jsonable_encoder(account) == expected_result
 
