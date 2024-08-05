@@ -1,6 +1,5 @@
 from datetime import timedelta
 
-
 from src.api.account.query import get_account
 from src.schema.account import Account as AccountSchema
 

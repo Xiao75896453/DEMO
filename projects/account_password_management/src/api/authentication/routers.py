@@ -1,16 +1,12 @@
 from fastapi import APIRouter, status
 from src.api.account.query import USERNAME_NOT_EXISTS_REASON
 from src.api.authentication.controller import (
-    PASSWORD_NOT_CORRECT_REASON,
-    TOO_MANY_FAILED_VERIFICATION_ATTEMPTS_REASON,
-    Authentication,
-)
+    PASSWORD_NOT_CORRECT_REASON, TOO_MANY_FAILED_VERIFICATION_ATTEMPTS_REASON,
+    Authentication)
 from src.schema.account import Account
-
 
 from lib.api_doc_response import api_doc_response
 from lib.custom_response import failed_response, success_response
-
 from lib.schema import ResponseSuccess
 
 router = APIRouter()

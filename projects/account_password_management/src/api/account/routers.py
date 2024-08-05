@@ -1,15 +1,14 @@
-from fastapi import APIRouter, status
+from fastapi import APIRouter, Depends, status
 from fastapi.responses import JSONResponse
-from src.api.account.controller import (
-    PASSWORD_COMPONENT_NOT_CORRECT_REASON,
-    PASSWORD_TOO_LONG_REASON,
-    PASSWORD_TOO_SHORT_REASON,
-    USERNAME_TOO_LONG_REASON,
-    USERNAME_TOO_SHORT_REASON,
-    Account,
-)
+from sqlalchemy.orm import Session
+from src.api.account.controller import (PASSWORD_COMPONENT_NOT_CORRECT_REASON,
+                                        PASSWORD_TOO_LONG_REASON,
+                                        PASSWORD_TOO_SHORT_REASON,
+                                        USERNAME_TOO_LONG_REASON,
+                                        USERNAME_TOO_SHORT_REASON, Account)
 from src.api.account.query import USERNAME_ALREADY_EXISTS_REASON
 from src.schema.account import Account as AccountSchema
+from src.utils.db_connector import db
 
 from lib.api_doc_response import api_doc_response
 from lib.custom_response import failed_response, success_response
@@ -64,12 +63,15 @@ router = APIRouter()
 )
 async def create_account(
     account_data: AccountSchema,
+    db_session: Session = Depends(db.get_db_session),
 ) -> ResponseSuccess:
     """
     - "username": a string representing the desired username for the account, with a minimum length of 3 characters and a maximum length of 32 characters.
     - "password": a string representing the desired password for the account, with a minimum length of 8 characters and a maximum length of 32 characters, containing at least 1 uppercase letter, 1 lowercase letter, and 1 number.
     """
     account = Account(account_data)
-    await account.create_account()
+    await account.create_account(db_session)
+
+    db_session.commit()
 
     return JSONResponse(status_code=status.HTTP_201_CREATED, content=success_response())
